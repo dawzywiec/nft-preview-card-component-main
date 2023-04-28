@@ -1,0 +1,213 @@
+// FONTS:
+$basic-font-size: 18px;
+$basic-font-family: 'Outfit',
+sans-serif;
+$light-font-weight: 300;
+$normal-font-weight: 400;
+$bold-font-weight: 600;
+
+// COLORS:
+$soft-blue: rgba(139, 172, 218, 1);
+$cyan: rgba(093, 255, 247, 1);
+$very-dark-blue-main: rgba(13, 25, 43, 0.5);
+$very-dark-blue-card: rgba(20, 37, 61, 1);
+$very-dark-blue-line: rgba(47, 65, 91, 1);
+$white: rgba(255, 255, 255, 1);
+$black: rgba(0, 0, 0, 1);
+$pink: rgba(253, 47, 111, 1);
+
+// WIDTHS:
+$desktop: 1440px;
+$mobile: 375px;
+$standard-padding: 20px;
+$standard-gap: 30px;
+$standard-border-radius: 20px;
+
+// BEFORE ICONS:
+@mixin icon {
+    position: relative;
+    padding-left: 25px;
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: calc(#{$standard-padding} * 4) $standard-padding;
+    background: rgb(254, 200, 173);
+    background: linear-gradient(156deg, rgba(254, 200, 173, 1) 0%, $pink 35%, rgba(10, 46, 84, 1) 100%);
+}
+
+#NTF-section {
+    max-width: $desktop;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: $standard-gap;
+    border-radius: $standard-border-radius;
+    font-family: $basic-font-family;
+    font-size: $basic-font-size;
+    background: rgb(20, 37, 61, 0.2);
+
+    .NFT-header {
+        width: 100%;
+        background-color: $very-dark-blue-card;
+        border-top-left-radius: $standard-border-radius;
+        border-top-right-radius: $standard-border-radius;
+        padding: $standard-padding;
+        color: $white;
+        text-align: center;
+
+        h1 {
+            font-size: calc(#{$basic-font-size} * 2);
+        }
+    }
+
+    .NFT-footer {
+        width: 100%;
+        background-color: $very-dark-blue-card;
+        border-bottom-left-radius: $standard-border-radius;
+        border-bottom-right-radius: $standard-border-radius;
+        padding: $standard-padding;
+        color: $white;
+        text-align: center;
+
+        button {
+            color: $white;
+            font-size: calc(#{$basic-font-size}*1.3);
+            font-weight: $bold-font-weight;
+            background-color: $very-dark-blue-line;
+            border-radius: $standard-border-radius;
+            border: 1px solid $very-dark-blue-line;
+            padding: calc(#{$standard-padding}*0.5) calc(#{$standard-padding}*3);
+            box-shadow: 0px 10px 20px -5px $very-dark-blue-card;
+            cursor: pointer;
+            transition: 0.3s;
+
+            &:hover {
+                transform: translateY(-5px);
+                background-color: $pink;
+                border: 1px solid $pink;
+                box-shadow: 0px 5px 30px -5px $pink;
+            }
+        }
+    }
+
+    .NTF-item {
+        display: flex;
+        flex-direction: column;
+        gap: $standard-gap;
+        max-width: 350px;
+        background-color: $very-dark-blue-card;
+        border-radius: $standard-border-radius;
+        padding: $standard-padding;
+        color: $soft-blue;
+        box-shadow: 0px 10px 20px -5px $very-dark-blue-card;
+        margin-bottom: $standard-gap;
+
+        .NTF-item-image-wrapper {
+            width: 100%;
+            overflow: hidden;
+            border-radius: $standard-border-radius;
+            cursor: pointer;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: 0.3s;
+            }
+
+            &:hover {
+
+                img {
+                    transform: scale(1.2);
+                }
+
+            }
+        }
+
+        h2 {
+            color: $white;
+        }
+
+        p {
+            font-weight: $light-font-weight;
+        }
+
+        .NTF-item-info {
+            display: flex;
+            justify-content: space-between;
+            font-weight: $normal-font-weight;
+
+            .NTF-item-info-price {
+                color: $cyan;
+                @include icon;
+
+                &:before {
+                    background-image: url(images/icon-ethereum.svg);
+                }
+            }
+
+            .NTF-item-info-date {
+                @include icon;
+
+                &:before {
+                    background-image: url(images/icon-clock.svg);
+                }
+            }
+        }
+
+        .NTF-item-author {
+            display: flex;
+            align-items: center;
+            gap: $standard-gap;
+            border-top: 1px solid $very-dark-blue-line;
+            padding-top: $standard-padding;
+
+            img {
+                border: 1px solid $white;
+                border-radius: 50%;
+                width: 30px;
+                height: 30px;
+            }
+
+            p {
+                font-size: calc(#{$basic-font-size} * 0.8);
+                font-weight: $light-font-weight;
+
+                a {
+                    color: $white;
+                    text-decoration: none;
+                }
+            }
+        }
+
+        &:hover {
+            transform: translateY(-20px);
+            box-shadow: 0px 20px 30px -10px $very-dark-blue-card;
+        }
+    }
+}
